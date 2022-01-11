@@ -58,6 +58,39 @@ public class EjerciciosNivel01 {
         }
     }
     
+    public boolean esIsograma(String palabra){
+        palabra = limpiaFrase(palabra);
+        for (int i=0; i < palabra.length(); i++){
+            for (int j=i+1; j < palabra.length(); j++){
+                if (palabra.charAt(i)==palabra.charAt(j)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    /**
+     * Convierte una frase en su acrónimo
+     * @param frase la frase a convertir en acrónimo
+     * @return el Acrónimo en mayúsculas
+     */
+    public String acronimo(String frase){
+        //suponemos que por lo menos hay una letra en la frase
+        frase = frase.toUpperCase();
+        String palabras[] = frase.split(" ");
+        String resultado = "";
+        for (int i=0; i<palabras.length; i++){
+            if ( !(palabras[i].equals("Y") || 
+                palabras[i].equals("E") ||
+                palabras[i].equals("DE") ||
+                palabras[i].equals("LA") ||
+                palabras[i].equals("LAS") ) ){
+            resultado = resultado + palabras[i].charAt(0);
+            }
+        }
+        
+        return resultado;
+    }
     
     
     public static void main(String[] args) {
@@ -70,6 +103,12 @@ public class EjerciciosNivel01 {
         System.out.println(Arrays.toString(e.maximos(numeros3)));
     
         System.out.println(e.esPalindromo("Acaso hubo buhos acá"));
+        
+        System.out.println("Isograma Pájaro: " + e.esIsograma("Pájaro"));
+        System.out.println("Isograma Tijeras: "+ e.esIsograma("Tijeras"));
+        
+        System.out.println("acronimo de Alta Velocidad Española: " + e.acronimo("Alta Velocidad Española "));
+        System.out.println("acronimo de Tecnología de la Información y de las Comunicaciones: " + e.acronimo("Tecnología de la Información y de las Comunicaciones "));
     }
     
 }
